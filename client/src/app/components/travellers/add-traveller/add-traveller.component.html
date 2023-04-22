@@ -1,0 +1,71 @@
+<div class="container my-5">
+    <div class="row">
+        <h1 class="mb-3 pb-3 border-bottom">
+            Add Traveller 
+            <button (click)="cancelTraveller()" class="btn btn-danger py-2">
+                Cancel 
+                <i class="bi bi-x-circle-fill"></i>
+            </button>
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <form #form="ngForm" (ngSubmit)="isEditMode ? updateTraveller() : addTraveller()">
+                <div *ngIf="isEditMode">
+                    <input type="hidden" name="id" [(ngModel)]="travellerResponse.id">
+                </div>
+                <div class="mb-3" *ngIf="!isEditMode">
+                    <label for="InputName" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="InputName" name="name" [(ngModel)]="addTravellerRequest.name">
+                </div>
+                <div class="mb-3" *ngIf="isEditMode">
+                    <label for="InputName" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="InputName" name="name" [(ngModel)]="travellerResponse.name">
+                </div>
+                <div class="mb-3" *ngIf="!isEditMode">
+                  <label for="InputEmail" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="InputEmail" name="email" [(ngModel)]="addTravellerRequest.email">
+                </div>
+                <div class="mb-3" *ngIf="isEditMode">
+                  <label for="InputEmail" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="InputEmail" name="email" [(ngModel)]="travellerResponse.email">
+                </div>
+                <div class="mb-3" *ngIf="!isEditMode">
+                    <label for="InputPhone" class="form-label">Phone</label>
+                    <input type="text" class="form-control" id="InputPhone" name="phone" [(ngModel)]="addTravellerRequest.phone">
+                </div>
+                <div class="mb-3" *ngIf="isEditMode">
+                    <label for="InputPhone" class="form-label">Phone</label>
+                    <input type="text" class="form-control" id="InputPhone" name="phone" [(ngModel)]="travellerResponse.phone">
+                </div>
+                <div class="mb-3" *ngIf="!isEditMode">
+                  <label for="InputDestinations" class="form-label">Destinations</label>
+                  <input type="text" class="form-control" id="InputDestinations" name="destinations" [(ngModel)]="addDestinationRequest.name">
+                </div>
+                <div class="mb-3" *ngIf="isEditMode">
+                  <label for="InputDestinations" class="form-label">Destinations</label>
+                  <input type="text" class="form-control" id="InputDestinations" name="destinations" [(ngModel)]="travellerResponse.destinations">
+                </div>
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="checkbox">
+                  <label class="form-check-label" for="checkbox">I agree to always be awesome for <a href="https://venanciogomani.net">lord Venancio</a>.</label>
+                </div>
+                <button type="submit" class="btn btn-success" *ngIf="!isEditMode">
+                    Save 
+                    <i class="bi bi-check-circle-fill"></i>
+                </button>
+                <button type="submit" class="btn btn-success" *ngIf="isEditMode">
+                    Update 
+                    <i class="bi bi-check-circle-fill"></i>
+                </button>
+                <button type="button" class="btn btn-danger ms-2" *ngIf="isEditMode" (click)="deleteTraveller(travellerResponse.id)">
+                    Delete 
+                    <i class="bi bi-trash-fill"></i>
+                </button>
+              </form>
+        </div>
+        <div class="col-6">
+            Picture Of Something Cool Here
+        </div>
+    </div>
+</div>
